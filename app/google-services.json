@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "378123274764",
+    "project_id": "cloudfunctionsmessage",
+    "storage_bucket": "cloudfunctionsmessage.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:378123274764:android:d3d71328801901f725fc29",
+        "android_client_info": {
+          "package_name": "com.example.cloudfunctionsmessage"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "378123274764-d5scojh93q5ufsc2ue46ohkafajuolo0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.cloudfunctionsmessage",
+            "certificate_hash": "4ab156b54f2b9bf62e8af8d29d315c094ba03a8b"
+          }
+        },
+        {
+          "client_id": "378123274764-l6r66ai87j6udpmf3uvctim5nt1qju06.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBwaFzgLJjI8eGx95X2P4X0rM2f0sVtlnU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "378123274764-l6r66ai87j6udpmf3uvctim5nt1qju06.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
