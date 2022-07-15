@@ -23,7 +23,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
 
     lateinit var notificationManager: NotificationManager
     lateinit var notificationChannel: NotificationChannel
-    lateinit var builder: Notification.Builder
+    lateinit var builder: NotificationCompat.Builder
     private val channelId = "i.apps.notifications"
     private val description = "Test notification"
 
@@ -34,7 +34,6 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
 
         if (remoteMessage.data.isNotEmpty()) {
             showNotification(remoteMessage.data["title"], remoteMessage.data["author"])
-//            Log.e("Notifications:", remoteMessage.data.toString())
         }
 
         remoteMessage.notification?.let {
@@ -53,7 +52,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
             notificationChannel.enableVibration(false)
             notificationManager.createNotificationChannel(notificationChannel)
 
-            builder = Notification.Builder(this, channelId)
+            builder = NotificationCompat.Builder(this, channelId)
                 .setContentTitle(author)
                 .setContentText(title)
                 .setSmallIcon(R.drawable.sym_def_app_icon)
@@ -61,7 +60,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
                 .setContentIntent(pendingIntent)
                 .setAutoCancel(true)
         } else {
-            builder = Notification.Builder(this)
+            builder = NotificationCompat.Builder(this, channelId)
                 .setContentTitle(author)
                 .setContentText(title)
                 .setSmallIcon(R.drawable.sym_def_app_icon)
@@ -69,6 +68,6 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
                 .setContentIntent(pendingIntent)
                 .setAutoCancel(true)
         }
-        notificationManager.notify(1234, builder.build())
+        notificationManager.notify(0, builder.build())
     }
 }
