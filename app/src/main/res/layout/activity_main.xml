@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity"
+    tools:context=".createrequest.MainActivity"
     android:padding="16dp"
     >
 
@@ -19,22 +19,29 @@
             android:id="@+id/et_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Title"/>
+            android:hint="Chủ đề"/>
 
         <EditText
             android:id="@+id/et_author"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Author"/>
+            android:hint="Tác giả"/>
 
         <Button
             android:id="@+id/btn_submit"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Submit"/>
+            android:textColor="@color/white"
+            android:layout_gravity="center"
+            android:text="Gửi tới tất cả thiết bị"/>
+
+        <Button
+            android:id="@+id/next"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:layout_gravity="center"
+            android:text="Tiếp tục"/>
 
     </LinearLayout>
-
-
-
 </LinearLayout>

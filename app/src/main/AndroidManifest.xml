@@ -15,7 +15,13 @@
         android:theme="@style/Theme.CloudFunctionsMessage"
         tools:targetApi="32">
         <activity
-            android:name=".MainActivity"
+            android:name=".list.details.DetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".list.ListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".createrequest.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,10 +31,10 @@
         </activity>
 
         <service
-            android:name=".MyFirebaseMessagingService"
+            android:name=".messageservice.MyFirebaseMessagingService"
             android:exported="true">
             <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
     </application>

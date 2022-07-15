@@ -3,7 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/learn_android/CloudFunctionsMessage/app/src/main/res/layout/activity_details.xml" value="0.2" />
+        <entry key="..\:/learn_android/CloudFunctionsMessage/app/src/main/res/layout/activity_list.xml" value="0.25416666666666665" />
         <entry key="..\:/learn_android/CloudFunctionsMessage/app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/learn_android/CloudFunctionsMessage/app/src/main/res/layout/items.xml" value="0.2" />
       </map>
     </option>
   </component>

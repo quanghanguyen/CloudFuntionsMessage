@@ -1,13 +1,14 @@
-package com.example.cloudfunctionsmessage
+package com.example.cloudfunctionsmessage.createrequest
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
 import com.example.cloudfunctionsmessage.databinding.ActivityMainBinding
+import com.example.cloudfunctionsmessage.firebaseconnection.DatabaseConnection
 import com.example.cloudfunctionsmessage.firebaseconnection.FireBaseMessaging
-import com.google.firebase.messaging.FirebaseMessaging
-import com.google.firebase.messaging.FirebaseMessagingService
+import com.example.cloudfunctionsmessage.list.ListActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -32,6 +33,7 @@ class MainActivity : AppCompatActivity() {
                     Toast.makeText(this, result.successMessage, Toast.LENGTH_SHORT).show()
                     binding.etTitle.text.clear()
                     binding.etAuthor.text.clear()
+                    startActivity(Intent(this, ListActivity::class.java))
                 }
                 is MainViewModel.SaveResult.ResultError -> {
                     Toast.makeText(this, result.errorMessage, Toast.LENGTH_SHORT).show()
@@ -41,10 +43,24 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initEvents() {
+        submit()
+        next()
+    }
+
+    private fun next() {
+        binding.next.setOnClickListener {
+            startActivity(Intent(this, ListActivity::class.java))
+        }
+    }
+
+    private fun submit() {
         binding.btnSubmit.setOnClickListener {
             val title = binding.etTitle.text.toString()
             val author = binding.etAuthor.text.toString()
-            mainViewModel.save(title, author)
+            val token = DatabaseConnection.firebaseDatabase.getReference("articles").push().key
+            if (token != null) {
+                mainViewModel.save(token, title, author)
+            }
         }
     }
 }

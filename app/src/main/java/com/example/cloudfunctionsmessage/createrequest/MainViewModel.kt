@@ -1,4 +1,4 @@
-package com.example.cloudfunctionsmessage
+package com.example.cloudfunctionsmessage.createrequest
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -18,11 +18,11 @@ class MainViewModel @Inject constructor(private val mainRepository: MainReposito
         class ResultError(val errorMessage : String) : SaveResult()
     }
 
-    fun save(title : String, author : String) {
+    fun save(token: String, title : String, author : String) {
         viewModelScope.launch(CoroutineExceptionHandler { _, throwable ->
             throwable.printStackTrace()
         }) {
-            mainRepository.save(title, author, onSuccess = {
+            mainRepository.save(token, title, author, onSuccess = {
                 saveResult.value = SaveResult.ResultOk("Success")
             }, onFail = {
                 saveResult.value = SaveResult.ResultOk(it)
