@@ -15,13 +15,16 @@
         android:theme="@style/Theme.CloudFunctionsMessage"
         tools:targetApi="32">
         <activity
+            android:name=".createrequest.MainActivity"
+            android:exported="false" />
+        <activity
             android:name=".list.details.DetailsActivity"
             android:exported="false" />
         <activity
             android:name=".list.ListActivity"
             android:exported="false" />
         <activity
-            android:name=".createrequest.MainActivity"
+            android:name=".signin.SignInActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

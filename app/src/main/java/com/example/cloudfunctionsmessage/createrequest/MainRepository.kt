@@ -6,14 +6,14 @@ import javax.inject.Inject
 
 class MainRepository @Inject constructor(private val firebaseDatabase : FirebaseDatabase) {
     fun save(
-        token : String,
+        notificationTokens : String,
         title : String,
         author : String,
         onSuccess : (String) -> Unit,
         onFail : (String) -> Unit
     ) {
-        val data = TitleModel(token, title, author)
-        firebaseDatabase.getReference("articles").child(token).setValue(data)
+        val data = TitleModel(notificationTokens, title, author)
+        firebaseDatabase.getReference("articles").push().setValue(data)
             .addOnCompleteListener {
                 if (it.isSuccessful) {
                     onSuccess(it.toString())

@@ -6,8 +6,8 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class TitleModel(
-    @SerializedName("token")
-    val token : String = "",
+    @SerializedName("notificationTokens")
+    val notificationTokens : String,
     @SerializedName("title")
     val title : String = "",
     @SerializedName("author")
