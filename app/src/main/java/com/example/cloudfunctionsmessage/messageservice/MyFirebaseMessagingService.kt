@@ -27,7 +27,6 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
 
         notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
-
         if (remoteMessage.data.isNotEmpty()) {
             showNotification(remoteMessage.data["title"], remoteMessage.data["author"])
         }
