@@ -43,7 +43,7 @@ class DetailsActivity : AppCompatActivity() {
         detailsBinding = ActivityDetailsBinding.inflate(layoutInflater)
         setContentView(detailsBinding.root)
 
-        FireBaseMessaging.firebaseMessaging.token.addOnCompleteListener(
+        FireBaseMessaging.firebaseMessaging.token.addOnCompleteListener (
             OnCompleteListener { task ->
                 if (!task.isSuccessful) {
                     Log.e(ContentValues.TAG, "Fetching FCM registration token failed", task.exception)
