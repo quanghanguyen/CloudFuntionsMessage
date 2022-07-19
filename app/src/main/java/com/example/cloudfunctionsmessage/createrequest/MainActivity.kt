@@ -8,6 +8,8 @@ import android.util.Log
 import android.widget.Toast
 import androidx.activity.viewModels
 import com.example.cloudfunctionsmessage.databinding.ActivityMainBinding
+import com.example.cloudfunctionsmessage.firebaseconnection.AuthConnection.author
+import com.example.cloudfunctionsmessage.firebaseconnection.AuthConnection.uid
 import com.example.cloudfunctionsmessage.firebaseconnection.DatabaseConnection
 import com.example.cloudfunctionsmessage.firebaseconnection.FireBaseMessaging
 import com.example.cloudfunctionsmessage.list.ListActivity
@@ -27,6 +29,16 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         FireBaseMessaging.firebaseMessaging.subscribeToTopic("android")
+
+        FireBaseMessaging.firebaseMessaging.token.addOnCompleteListener(
+            OnCompleteListener { task ->
+                if (!task.isSuccessful) {
+                    Log.e(ContentValues.TAG, "Fetching FCM registration token failed", task.exception)
+                    return@OnCompleteListener
+                }
+                token = task.result
+            })
+
         initEvents()
         initObserve()
     }
@@ -37,7 +49,6 @@ class MainActivity : AppCompatActivity() {
                 is MainViewModel.SaveResult.ResultOk -> {
                     Toast.makeText(this, result.successMessage, Toast.LENGTH_SHORT).show()
                     binding.etTitle.text.clear()
-                    binding.etAuthor.text.clear()
                     startActivity(Intent(this, ListActivity::class.java))
                 }
                 is MainViewModel.SaveResult.ResultError -> {
@@ -61,17 +72,13 @@ class MainActivity : AppCompatActivity() {
     private fun submit() {
         binding.btnSubmit.setOnClickListener {
             val title = binding.etTitle.text.toString()
-            val author = binding.etAuthor.text.toString()
-            FireBaseMessaging.firebaseMessaging.token.addOnCompleteListener(
-                OnCompleteListener { task ->
-                    if (!task.isSuccessful) {
-                        Log.e(ContentValues.TAG, "Fetching FCM registration token failed", task.exception)
-                        return@OnCompleteListener
-                    }
-                    token = task.result
-                })
+
             if (token != null) {
-                mainViewModel.save(token!!, title, author)
+                if (author != null) {
+                    if (uid != null) {
+                        mainViewModel.save(uid, token!!, title, author)
+                    }
+                }
             }
         }
     }

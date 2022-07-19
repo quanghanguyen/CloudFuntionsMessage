@@ -18,11 +18,11 @@ class MainViewModel @Inject constructor(private val mainRepository: MainReposito
         class ResultError(val errorMessage : String) : SaveResult()
     }
 
-    fun save(notificationTokens: String, title : String, author : String) {
+    fun save(user_uid : String, notificationTokens: String, title : String, author : String) {
         viewModelScope.launch(CoroutineExceptionHandler { _, throwable ->
             throwable.printStackTrace()
         }) {
-            mainRepository.save(notificationTokens, title, author, onSuccess = {
+            mainRepository.save(user_uid, notificationTokens, title, author, onSuccess = {
                 saveResult.value = SaveResult.ResultOk("Success")
             }, onFail = {
                 saveResult.value = SaveResult.ResultOk(it)
