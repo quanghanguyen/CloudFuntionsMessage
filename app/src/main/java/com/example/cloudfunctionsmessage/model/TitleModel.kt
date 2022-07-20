@@ -9,7 +9,7 @@ data class TitleModel(
     @SerializedName("user_uid")
     val user_uid : String = "",
     @SerializedName("notificationTokens")
-    val notificationTokens : String = "",
+    val notificationTokens : NotificationTokens? = null,
     @SerializedName("title")
     val title : String = "",
     @SerializedName("author")

@@ -1,5 +1,6 @@
 package com.example.cloudfunctionsmessage.list
 
+import android.util.Log
 import com.example.cloudfunctionsmessage.model.TitleModel
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError

@@ -1,6 +1,7 @@
 package com.example.cloudfunctionsmessage.createrequest
 
 import com.example.cloudfunctionsmessage.firebaseconnection.AuthConnection.uid
+import com.example.cloudfunctionsmessage.model.NotificationTokens
 import com.example.cloudfunctionsmessage.model.TitleModel
 import com.google.firebase.database.FirebaseDatabase
 import javax.inject.Inject
@@ -8,7 +9,7 @@ import javax.inject.Inject
 class MainRepository @Inject constructor(private val firebaseDatabase : FirebaseDatabase) {
     fun save(
         user_uid : String,
-        notificationTokens : String,
+        notificationTokens : NotificationTokens,
         title : String,
         author : String,
         onSuccess : (String) -> Unit,

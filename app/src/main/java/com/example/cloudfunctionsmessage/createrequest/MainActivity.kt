@@ -13,6 +13,7 @@ import com.example.cloudfunctionsmessage.firebaseconnection.AuthConnection.uid
 import com.example.cloudfunctionsmessage.firebaseconnection.DatabaseConnection
 import com.example.cloudfunctionsmessage.firebaseconnection.FireBaseMessaging
 import com.example.cloudfunctionsmessage.list.ListActivity
+import com.example.cloudfunctionsmessage.model.NotificationTokens
 import com.google.android.gms.tasks.OnCompleteListener
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -35,8 +36,9 @@ class MainActivity : AppCompatActivity() {
                 if (!task.isSuccessful) {
                     Log.e(ContentValues.TAG, "Fetching FCM registration token failed", task.exception)
                     return@OnCompleteListener
+                } else {
+                    token = task.result
                 }
-                token = task.result
             })
 
         initEvents()
@@ -76,7 +78,7 @@ class MainActivity : AppCompatActivity() {
             if (token != null) {
                 if (author != null) {
                     if (uid != null) {
-                        mainViewModel.save(uid, token!!, title, author)
+                        mainViewModel.save(uid, NotificationTokens(token = token!!), title, author)
                     }
                 }
             }
